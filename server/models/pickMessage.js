@@ -1,18 +1,18 @@
 import mongoose from "mongoose";
 
 const pickSchema = mongoose.Schema({
-    accountID: Number,
-    week: Number,
-    gameID: Number,
-    teamPicked: Number,
-    scoreDifferential: {
-        type: String,
-        default: null
+    _id: {
+        userId: Number,
+        gameId: Number
     },
+    schoolPicked: Number,
+    scoreDifferential: String,
     points: {
-        type: Number,
+        type: String,
         default: 0
-    }
+    },
+    createdDateTime: Timestamp,
+    lastUpdatedDateTime: Timestamp
 });
 
 
