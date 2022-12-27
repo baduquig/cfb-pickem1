@@ -2,9 +2,9 @@ import PickMessage from "../models/pickMessage";
 
 export const getPicks = async (req, res) => {
     try {
-        const pickMessages = await PickMessage.find();
-        console.log(pickMessages);
-        res.status(200).json(pickMessages);
+        const picksMessage = await PickMessage.find();
+        console.log(picksMessage);
+        res.status(200).json(picksMessage);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }

@@ -2,11 +2,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
-import postRoutes from './routes/posts.js';
+import picksRoutes from './routes/picks.js';
 
 const app = express();
 
-app.use('/posts', postRoutes);
+app.use('/picks', picksRoutes);
 
 // Database Connection
 // TODO: Further research into connection issues
