@@ -1,22 +1,23 @@
-import PickMessage from "../models/pickMessage";
+import Pick from "../models/pickMessage.js";
 
-export const getPicks = async (req, res) => {
+export const getUserPicks = async (req, res) => { 
+    const { id } = req.params;
+
     try {
-        const picksMessage = await PickMessage.find();
-        console.log(picksMessage);
-        res.status(200).json(picksMessage);
+        const post = await Pick.findById(id);        
+        res.status(200).json(post);
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
 }
 
 
-export const createPick = async (req, res) => {
+export const submitPick = async (req, res) => {
     const { id, schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime } = req.body;
-    const newPickMessage = new PickMessage({ id, schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime });
+    const newPick = new Pick({ id, schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime });
 
     try {
-        await newPickMessage.save();
+        await newPick.save();
         res.status(201).json(newPickMessage );
     } catch (error) {
         res.status(409).json({ message: error.message });
@@ -27,8 +28,12 @@ export const createPick = async (req, res) => {
 export const updatePick = async (req, res) => {
     const { id } = req.params;
     const { schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime } = req.body;
-    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
-    const updatedPick = { schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime };
-    await updatedPick.findByIdAndUpdate(id, updatedPick);
-    res.json(updatedPick);
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).send(`No post with id: ${id}`);
+    } else {
+        const updatedPick = { _id: id, schoolPicked, scoreDifferential, points, createdDateTime: createdDateTime,  lastUpdatedDateTime };        
+        await updatedPick.findByIdAndUpdate(id, updatedPick);
+        res.json(updatedPick);
+    }
 }

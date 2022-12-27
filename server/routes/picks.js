@@ -1,9 +1,10 @@
 import express from 'express';
-import { getPicks } from '../controllers/picks';
+import { getUserPicks, submitPick, updatePick } from '../controllers/picks';
 
 const router = express.Router();
 
-// Get all user picks
-router.get('/', getPicks());
+router.get('/:id', getUserPicks());
+router.post('/:id', submitPick());
+router.patch('/:id', updatePick())
 
 export default router;

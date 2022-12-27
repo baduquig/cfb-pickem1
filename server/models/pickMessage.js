@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const pickSchema = mongoose.Schema({
+const pickSchema = mongoose.Schema({    
     _id: {
         userId: Number,
         gameId: Number
@@ -16,6 +16,6 @@ const pickSchema = mongoose.Schema({
 });
 
 
-const PickMessage = mongoose.Model('PickMessage', pickSchema);
+const Pick = mongoose.Model('Pick', pickSchema);
 
-export default PickMessage;
+export default Pick;
