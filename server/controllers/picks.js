@@ -1,4 +1,4 @@
-import Pick from "../models/pickMessage.js";
+import Pick from "../models/picks.js";
 
 export const getUserPicks = async (req, res) => { 
     const { id } = req.params;
