@@ -1,9 +1,10 @@
 import React from 'react';
+import TopNav from './components/TopNav/topNav';
 
 const App = () => {
     return(
         <div>
-            <h1>College Football Pick'em 2023</h1>
+            <TopNav />
         </div>
     )
 }
