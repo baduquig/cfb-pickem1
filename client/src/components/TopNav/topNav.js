@@ -10,7 +10,7 @@ class TopNav extends React.Component {
 
     render() {
         return (
-            <h1>Week {this.state.weekNumber} </h1>
+            <h1>Week {this.state.weekNumber}</h1>
         );
     }
 }
