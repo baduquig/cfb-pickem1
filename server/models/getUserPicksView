@@ -1,28 +1,21 @@
-db.createView("createUserPicks", "games", [
+db.createView("getAllRenderedData", "picks", [
     {        
         $lookup: {
-          from: "schools",
-          localField: "awaySchoolId",
-          foreignField: "_id",
-          as: "awaySchools"
+          from: "getAllGamesView",
+          localField: "gameId",
+          foreignField: "gameId",
+          as: "gameData"
         },
 
         $lookup: {
-          from: "schools",
-          localField: "homeSchoolId",
-          foreignField: "_id",
-          as: "homeSchools"
-        },
-
-        /* $lookup: {
           from: "picks",
           localField: "_id",
           foreignField: "gameId",
           as: "picks"
-        }, */
+        },
 
         $project: {
-            _id: 0,
+            // 
             gameId: 1,
             week: 1,
             day: 1,
