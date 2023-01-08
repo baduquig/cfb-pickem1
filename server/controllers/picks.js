@@ -13,8 +13,13 @@ export const getUserPicks = async (req, res) => {
 
 
 export const submitPick = async (req, res) => {
-    const { id, schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime } = req.body;
-    const newPick = new Pick({ id, schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime });
+    const { id, userName, schoolPicked, scoreDifferential, points, week, day, date, gameTime, 
+            finalScore, awaySchoolId, awaySchoolName, awaySchoolMascot, homeSchoolId, 
+            homeSchoolName, homeSchoolMascot, createdDateTime, lastUpdatedDateTime } = req.body;
+    
+    const newPick = new Pick({ id, userName, schoolPicked, scoreDifferential, points, week, day, date, gameTime, 
+                                finalScore, awaySchoolId, awaySchoolName, awaySchoolMascot, homeSchoolId, 
+                                homeSchoolName, homeSchoolMascot, createdDateTime, lastUpdatedDateTime });
 
     try {
         await newPick.save();
@@ -27,12 +32,20 @@ export const submitPick = async (req, res) => {
 
 export const updatePick = async (req, res) => {
     const { id } = req.params;
-    const { schoolPicked, scoreDifferential, points, createdDateTime,  lastUpdatedDateTime } = req.body;
+    const { userName, schoolPicked, scoreDifferential, points, week, day, date, gameTime, 
+            finalScore, awaySchoolId, awaySchoolName, awaySchoolMascot, homeSchoolId, 
+            homeSchoolName, homeSchoolMascot, createdDateTime, lastUpdatedDateTime } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(404).send(`No post with id: ${id}`);
     } else {
-        const updatedPick = { _id: id, schoolPicked, scoreDifferential, points, createdDateTime: createdDateTime,  lastUpdatedDateTime };        
+        const updatedPick = { _id: id, userName, schoolPicked, scoreDifferential, points: points, 
+                                week: week, day: day, date: date, gameTime: gameTime, finalScore, 
+                                awaySchoolId: awaySchoolId, awaySchoolName: awaySchoolName, 
+                                awaySchoolMascot: awaySchoolMascot, homeSchoolId: homeSchoolId, 
+                                homeSchoolName: homeSchoolName, homeSchoolMascot: homeSchoolMascot, 
+                                createdDateTime: createdDateTime, lastUpdatedDateTime };
+                        
         await updatedPick.findByIdAndUpdate(id, updatedPick);
         res.json(updatedPick);
     }

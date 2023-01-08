@@ -19,9 +19,7 @@ const pickSchema = mongoose.Schema({
         type: String,
         default: 0
     },
-    createdDateTime: Timestamp,
-    lastUpdatedDateTime: Timestamp,
-
+    
     // Game related data
     week: Number,
     day: Number,
@@ -33,7 +31,10 @@ const pickSchema = mongoose.Schema({
     awaySchoolMascot: String,
     homeSchoolId: Number,
     homeSchoolName: String,
-    homeSchoolMascot: String
+    homeSchoolMascot: String,
+
+    createdDateTime: Timestamp,
+    lastUpdatedDateTime: Timestamp
 });
 
 
