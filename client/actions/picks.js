@@ -1,6 +1,6 @@
 import * as api from '../api';
 
-const getPicks = () => async(dispatch) => {
+export const getPicks = () => async(dispatch) => {
     try {
         const { data } = await api.fetchPicks();
         dispatch({ type: 'FETCH_ALL', payload: data });

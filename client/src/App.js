@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { getPicks } from './actions/picks';
-import TopNav from './components/TopNav/topNav';
+import { getPicks } from './actions/picks.js';
+import TopNav from './components/TopNav/topNav.js';
 
 const App = () => {
     const dispatch = useDispatch();

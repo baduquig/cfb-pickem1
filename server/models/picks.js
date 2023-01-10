@@ -39,9 +39,9 @@ const pickSchema = mongoose.Schema({
         default: new Date()
     },
     lastUpdatedDateTime: Date
-});
+})
 
 
-const Pick = mongoose.Model('Pick', pickSchema);
+const Pick = mongoose.model('Pick', pickSchema);
 
 export default Pick;
