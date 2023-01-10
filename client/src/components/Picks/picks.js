@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from 'react-redux';
 
 class Picks extends React.Component {
     constructor(props) {
@@ -20,6 +21,8 @@ class Picks extends React.Component {
     }
 
     render() {
+        const picks = useSelector((state) => state.picks);
+        
         return (
             <div>
                 <table>
